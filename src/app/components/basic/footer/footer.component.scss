@@ -1,0 +1,27 @@
+.logo-img {
+    max-width: 220px;
+}
+
+.background-primary {
+    background-color: var(--ion-color-secondary);
+}
+
+.background-light {
+    background-color: var(--ion-color-light);
+}
+
+ion-col {
+    padding: 0px;
+}
+
+.social-button {
+    --background: var(--ion-color-medium);
+    --color: var(--ion-color-dark);
+    transition: 0.3s ease-in all;
+    padding: 2px;
+}
+
+.social-button:hover {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-light);
+}

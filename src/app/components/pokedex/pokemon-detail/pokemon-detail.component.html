@@ -1,0 +1,61 @@
+<ion-app *ngIf="pokemon">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title style="text-align: center; font-size: 32px;" class="ion-text-center" class="text">{{pokemon.name}} #{{pokemon.id | number:'3.0-0'}}</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="modalC.dismiss()">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content id="pokemon-detail">
+    <ion-row class="full-noHeader ion-align-items-center ion-justify-content-center">
+      <ion-col size="auto">
+        <ion-card>
+          <div>
+            <ion-fab vertical="top" horizontal="start" slot="fixed">
+              <ion-fab-button [color]="shiny ? 'secondary' : 'medium'" (click)="shiny = !shiny">
+                <ion-icon color="light" name="star"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+            <img [src]="shiny ? pokemon.sprites.front_shiny : pokemon.sprites.front_default" class="poke-img">
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col size="" style="min-width: 250px;">
+        <!-- <p class="text">{{pokemon}}</p> -->
+        <ion-card>
+          <ion-card-content>
+            <h1 class="text">Datos básicos</h1>
+            <div class="line-h-primary"></div>
+            <div style="height: 10px;"></div>
+            <p><b>• Altura:</b> {{pokemon.height / 10}} m</p>
+            <p><b>• Peso:</b> {{pokemon.weight / 10}} kg</p>
+            <br>
+            <h1 class="text">Typo</h1>
+            <div class="line-h-primary"></div>
+            <div style="height: 10px;"></div>
+            <ion-badge *ngFor="let type of pokemon?.types || []" class="type-badge" color="primary" mode="md">
+              {{type.type.name}}
+            </ion-badge>
+            <br><br>
+            <h1 class="text">Estadisticas base</h1>
+            <div class="line-h-primary"></div>
+            <div style="height: 10px;"></div>
+            <p *ngFor="let stat of pokemon.stats"><b>• {{stat.stat.name}}:</b> {{stat.base_stat}}</p>
+            <br>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <h1 *ngIf="evolutions.length" class="text ion-text-center">Evoluciones</h1>
+        <ion-row class="ion-justify-content-center">
+          <ion-col sizeXs="12" sizeSm="6" sizeMd="3" *ngFor="let p of evolutions">
+            <app-pokemon-card [pokemon]="p.pokemon"></app-pokemon-card>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-content>
+</ion-app>

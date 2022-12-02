@@ -1,0 +1,19 @@
+.div-logo {
+    position: absolute;
+    z-index: 100;
+    left: 15px;
+    top: 0px;
+    padding: 8px;
+    background-color: rgba(var(--ion-color-tertiary-rgb), 0.35);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-left: 3px var(--ion-color-secondary) solid;
+    border-right: 3px var(--ion-color-secondary) solid;
+    border-bottom: 3px var(--ion-color-secondary) solid;
+    cursor: pointer;
+}
+
+.img-logo {
+    height: 72px;
+    color: white;
+}

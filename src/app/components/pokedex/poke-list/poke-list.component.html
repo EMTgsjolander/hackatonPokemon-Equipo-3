@@ -1,0 +1,33 @@
+<br><br><br>
+<ion-grid fixed *ngIf="pokemons.length > 0">
+  <ion-row>
+    <ion-col size="12">
+      <ion-card>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="">
+            <ion-item>
+              <ion-label class="text" position="floating"><h1 style="margin: 0px;" class="text"><ion-icon name="search"></ion-icon> Buscar</h1></ion-label>
+              <ion-input class="text" type="search" placeholder="Buscar Pokemon" (ionChange)="search($event)"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="auto">
+            <ion-buttons>
+              <ion-button (click)="downloadCSV()">
+                <ion-icon slot="icon-only" name="download"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="pokemons | search:searchField as filterPokemons">
+    <ion-col sizeXs="12" sizeSm="6" sizeMd="3" *ngFor="let p of filterPokemons">
+      <app-pokemon-card [pokemon]="p"></app-pokemon-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-infinite-scroll threshold="100px" [disabled]="loading" position="bottom" (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>

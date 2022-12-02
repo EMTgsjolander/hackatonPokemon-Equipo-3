@@ -1,0 +1,16 @@
+<ion-card button class="poke-card" (click)="detail(pokemon)">
+  <div class="ion-text-center">
+    <img class="poke-img" [src]="pokemon?.sprites?.front_default || 'assets/images/no-poke.png'">
+  </div>
+  <div class="line-h-dark"></div>
+  <div class="numer-div">
+    <span class="text-light" style="font-size: 18px;">#{{pokemon?.id | number:'3.0-3'}}</span>
+  </div>
+  <div class="content">
+    <h2 style="margin-top: 8px;" class="text">{{pokemon?.name}}</h2>
+    <ion-badge *ngFor="let type of pokemon?.types || []" class="type-badge" color="primary" mode="md">
+      {{type.type.name}}
+    </ion-badge>
+    <br><br>
+  </div>
+</ion-card>
